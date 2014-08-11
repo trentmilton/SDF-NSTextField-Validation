@@ -22,9 +22,16 @@ Add simple validation to your text fields for the following types:
 	// Where self.textField is an NSTextField property on the class
 	self.textField.validationType = ValidationTypeEmail;
 	```
+	
+3. Set a placeholder string if required (not required if you have the text field linked up in the nib and the placeholder set there)
 
-3. Add **NSTextFieldDelegate** to the .h file.
-4. Add the following to the .m file.
+	```
+	self.textField.placeholderString = @"Email";
+	```
+
+4. Add **NSTextFieldDelegate** to the .h file.
+5. Add the following to the .m file.
+	
 	```
 	#pragma mark - Notification
 	
@@ -36,7 +43,7 @@ Add simple validation to your text fields for the following types:
 		  // Do something on invalid entry if you want
 		}
 	}
-```
+	```
 
 It is at this point the fields will be highlighted based on the validation type you set.
 
