@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 shaydes.dsgn. All rights reserved.
 //
 
-#import "SDFTextField+Validation.h"
+#import "NSTextField+Validation.h"
 #import <objc/runtime.h>
 
 static NSColor *kValidationTextFieldBackgroundColour;
@@ -113,15 +113,15 @@ static void *PlaceholderStringPropertyKey = &PlaceholderStringPropertyKey;
 - (void)setPlaceholderFontColour:(NSColor *)colour
 {
 	if (!self.placeholderString) {
-        self.placeholderString = [self.cell placeholderString];
+	self.placeholderString = [self.cell placeholderString];
     }
 
 	NSDictionary *d = @{
-                        NSFontAttributeName : self.font,
-                        NSForegroundColorAttributeName : colour
-                        };
+			NSFontAttributeName : self.font,
+			NSForegroundColorAttributeName : colour
+			};
 	NSAttributedString *as = [[NSAttributedString alloc] initWithString:self.placeholderString
-	                                                         attributes:d];
+								 attributes:d];
 	[self.cell setPlaceholderAttributedString:as];
 }
 

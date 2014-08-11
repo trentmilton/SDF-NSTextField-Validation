@@ -1,5 +1,5 @@
 //
-//  SDFTextField+Validation.h
+//  NSTextField+Validation.h
 //
 //  Created by Trent Milton on 02/07/2014.
 //  Copyright (c) 2014 shaydes.dsgn. All rights reserved.
