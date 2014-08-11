@@ -12,31 +12,31 @@ Add simple validation to your text fields for the following types:
 
 1. Add the following line to your header
 
-```
-#import "SDFTextField+Validation.h"
-```
+	```
+	#import "SDFTextField+Validation.h"
+	```
 
 2. Set a **validationType** property to the NSTextField from the **ValidationType** enum.
 
-```
-// Where self.textField is an NSTextField property on the class
-self.textField.validationType = ValidationTypeEmail;
-```
+	```
+	// Where self.textField is an NSTextField property on the class
+	self.textField.validationType = ValidationTypeEmail;
+	```
 
-3. Add **NSTextFieldDelegate** to you controller class.
+3. Add **NSTextFieldDelegate** to the .h file.
 4. Add the following method somewhere in your code
 
-```
-#pragma mark - Notification
-
-- (void)controlTextDidChange:(NSNotification *)notification
-{
-	NSTextField *textField = [notification object];
-	BOOL valid = [textField validate];
-	if (!valid) {
-	  // Do something on invalid entry if you want
+	```
+	#pragma mark - Notification
+	
+	- (void)controlTextDidChange:(NSNotification *)notification
+	{
+		NSTextField *textField = [notification object];
+		BOOL valid = [textField validate];
+		if (!valid) {
+		  // Do something on invalid entry if you want
+		}
 	}
-}
 ```
 
 It is at this point the fields will be highlighted based on the validation type you set.
