@@ -24,8 +24,7 @@ Add simple validation to your text fields for the following types:
 	```
 
 3. Add **NSTextFieldDelegate** to the .h file.
-4. Add the following method somewhere in your code
-
+4. Add the following to the .m file.
 	```
 	#pragma mark - Notification
 	
@@ -45,18 +44,18 @@ It is at this point the fields will be highlighted based on the validation type 
 
 Setting the colours is easy, just modify your colours as required. All take an NSColor as type.
 
-[NSTextField setBackgroundColour:colour];
-[NSTextField setValidBackgroundColour:colour];
-[NSTextField setInvalidBackgroundColour:colour];
-[NSTextField setPlaceholderFontColour:colour];
-[NSTextField setPlaceholderValidateFontColour:colour];
+- [NSTextField setBackgroundColour:colour];
+- [NSTextField setValidBackgroundColour:colour];
+- [NSTextField setInvalidBackgroundColour:colour];
+- [NSTextField setPlaceholderFontColour:colour];
+- [NSTextField setPlaceholderValidateFontColour:colour];
 
 **Defaults**
 
 Each field has it's own default as specified below:
 
-kValidationTextFieldBackgroundColour = [NSColor whiteColor];
-kValidationTextFieldValidBackgroundColour = [NSColor greenColor];
-kValidationTextFieldInvalidBackgroundColour = [NSColor redColor];
-kValidationTextFieldPlaceholderValidateFontColour = [NSColor whiteColor];
-kValidationTextFieldPlaceholderFontColour = [NSColor grayColor];
+- kValidationTextFieldBackgroundColour = [NSColor whiteColor];
+- kValidationTextFieldValidBackgroundColour = [NSColor greenColor];
+- kValidationTextFieldInvalidBackgroundColour = [NSColor redColor];
+- kValidationTextFieldPlaceholderValidateFontColour = [NSColor whiteColor];
+- kValidationTextFieldPlaceholderFontColour = [NSColor grayColor];
