@@ -49,8 +49,8 @@ It is at this point the fields will be highlighted based on the validation type 
 
 # Methods
 
-- valid: This will check the current string of the txt field against the validation type and return the result.
-- reset Reset the text field removing all validation background colouring.
+- **valid**: This will check the current string of the txt field against the validation type and return the result.
+- **reset**: Reset the text field removing all validation background colouring.
 
 # Customisation
 
