@@ -47,6 +47,11 @@ Add simple validation to your text fields for the following types:
 
 It is at this point the fields will be highlighted based on the validation type you set.
 
+# Methods
+
+- valid: This will check the current string of the txt field against the validation type and return the result.
+- reset Reset the text field removing all validation background colouring.
+
 # Customisation
 
 Setting the colours is easy, just modify your colours as required. All take an NSColor as type.
