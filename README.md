@@ -5,7 +5,7 @@ Add simple validation to your text fields for the following types:
 
 - **none**: default
 - **email**: Needs an @ and a TLD.
-- **password**: requires at least 1 character, masked text. Make sure you use a NSSecureTextField type.
+- **password**: requires at least 1 character, masked text. Make sure you use a **NSSecureTextField** type.
 - **required**: requires at least 1 character.
 
 # Usage
