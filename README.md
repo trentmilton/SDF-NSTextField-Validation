@@ -3,10 +3,10 @@ SDFTextField
 
 Add simple validation to your text fields for the following types:
 
-- none: default
-- email
-- password: requires at least 1 character, masked text.
-- required: requires at least 1 character.
+- **none**: default
+- **email**: Needs an @ and a TLD.
+- **password**: requires at least 1 character, masked text.
+- **required**: requires at least 1 character.
 
 # Usage
 
