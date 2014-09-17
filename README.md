@@ -1,11 +1,12 @@
-SDFTextField
-============
+SDF TextField Validation
+==================
 
 Add simple validation to your text fields for the following types:
 
 - **none**: default
 - **email**: Needs an @ and a TLD.
-- **password**: requires at least 1 character, masked text. Make sure you use a **NSSecureTextField** type.
+- **email optional**: as above but can also be empty
+- **password**: requires at least 1 character, masked text.
 - **required**: requires at least 1 character.
 
 # Usage
@@ -16,11 +17,11 @@ Add simple validation to your text fields for the following types:
 	#import "SDFTextField+Validation.h"
 	```
 
-2. Set a **validationType** property to the NSTextField from the **ValidationType** enum.
+2. Set a **textFieldValidationType** property to the NSTextField from the **TextFieldValidationType** enum.
 
 	```
 	// Where self.textField is an NSTextField property on the class
-	self.textField.validationType = ValidationTypeEmail;
+	self.textField.textFieldValidationType = TextFieldValidationTypeEmail;
 	```
 	
 3. Set a placeholder string if required (not required if you have the text field linked up in the nib and the placeholder set there)
@@ -49,7 +50,7 @@ It is at this point the fields will be highlighted based on the validation type 
 
 # Methods
 
-- **valid**: This will check the current string of the txt field against the validation type and return the result.
+- **valid**: This will check the current string of the text field against the validation type and return the result.
 - **reset**: Reset the text field removing all validation background colouring.
 
 # Customisation

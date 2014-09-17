@@ -14,7 +14,7 @@ static NSColor *kValidationTextFieldInvalidBackgroundColour;
 static NSColor *kValidationTextFieldPlaceholderValidateFontColour;
 static NSColor *kValidationTextFieldPlaceholderFontColour;
 
-static void *ValidationTypePropertyKey = &ValidationTypePropertyKey;
+static void *TextFieldValidationTypePropertyKey = &TextFieldValidationTypePropertyKey;
 static void *PlaceholderStringPropertyKey = &PlaceholderStringPropertyKey;
 
 @implementation NSTextField (Validation)
@@ -32,15 +32,15 @@ static void *PlaceholderStringPropertyKey = &PlaceholderStringPropertyKey;
 
 #pragma mark - Properties
 
-- (ValidationType)validationType
+- (TextFieldValidationType)textFieldValidationType
 {
-	NSNumber *t = objc_getAssociatedObject(self, ValidationTypePropertyKey);
+	NSNumber *t = objc_getAssociatedObject(self, TextFieldValidationTypePropertyKey);
 	return t.intValue;
 }
 
-- (void)setValidationType:(ValidationType)validationType
+- (void)setTextFieldValidationType:(TextFieldValidationType)textFieldValidationType
 {
-	objc_setAssociatedObject(self, ValidationTypePropertyKey, @(validationType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	objc_setAssociatedObject(self, TextFieldValidationTypePropertyKey, @(textFieldValidationType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSString *)placeholderString
@@ -61,25 +61,35 @@ static void *PlaceholderStringPropertyKey = &PlaceholderStringPropertyKey;
 	NSColor *placeholderColour = kValidationTextFieldPlaceholderValidateFontColour;
 
 	BOOL valid = YES;
-	switch (self.validationType) {
-		case ValidationTypeNone:
-			placeholderColour = kValidationTextFieldPlaceholderFontColour;
+	switch (self.textFieldValidationType) {
+		case TextFieldValidationTypeNone:
 			// Do nothing, we just want white
+			placeholderColour = kValidationTextFieldPlaceholderFontColour;
 			break;
 
-		case ValidationTypeEmail: {
+		case TextFieldValidationTypeEmailOptional:
+			// IMPORTANT: make sure this is above the ValidationTypeEmail (which should be below)
+			if (self.stringValue.length == 0) {
+				// Do nothing, we just want white
+				placeholderColour = kValidationTextFieldPlaceholderFontColour;
+				break;
+			}
+
+		// Else: Do nothing, flow threw to ValidationTypeEmail
+
+		case TextFieldValidationTypeEmail: {
 			valid = [self.stringValue validEmail];
 			bgColour = valid ? kValidationTextFieldValidBackgroundColour : kValidationTextFieldInvalidBackgroundColour;
 			break;
 		}
 
-		case ValidationTypeOptional:
+		case TextFieldValidationTypeOptional:
 			placeholderColour = kValidationTextFieldPlaceholderFontColour;
 			bgColour = kValidationTextFieldBackgroundColour;
 			break;
 
-		case ValidationTypeRequired:
-		case ValidationTypePassword:
+		case TextFieldValidationTypeRequired:
+		case TextFieldValidationTypePassword:
 		default: {
 			valid = self.stringValue.length > 0;
 			bgColour = valid ? kValidationTextFieldValidBackgroundColour : kValidationTextFieldInvalidBackgroundColour;
@@ -113,15 +123,15 @@ static void *PlaceholderStringPropertyKey = &PlaceholderStringPropertyKey;
 - (void)setPlaceholderFontColour:(NSColor *)colour
 {
 	if (!self.placeholderString) {
-	self.placeholderString = [self.cell placeholderString];
-    }
+		self.placeholderString = [self.cell placeholderString];
+	}
 
 	NSDictionary *d = @{
-			NSFontAttributeName : self.font,
-			NSForegroundColorAttributeName : colour
-			};
+		NSFontAttributeName : self.font,
+		NSForegroundColorAttributeName : colour
+	};
 	NSAttributedString *as = [[NSAttributedString alloc] initWithString:self.placeholderString
-								 attributes:d];
+	                                                         attributes:d];
 	[self.cell setPlaceholderAttributedString:as];
 }
 
