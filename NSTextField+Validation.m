@@ -6,6 +6,7 @@
 //
 
 #import "NSTextField+Validation.h"
+#import "NSString+Validate.h"
 #import <objc/runtime.h>
 
 static NSColor *kValidationTextFieldBackgroundColour;
