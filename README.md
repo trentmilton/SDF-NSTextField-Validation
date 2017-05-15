@@ -14,7 +14,7 @@ Add simple validation to your text fields for the following types:
 1. Add the following line to your header
 
 	```
-	#import "SDFTextField+Validation.h"
+	#import "NSTextField+Validation.h"
 	```
 
 2. Set a **textFieldValidationType** property to the NSTextField from the **TextFieldValidationType** enum.
